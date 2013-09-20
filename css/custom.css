@@ -22,6 +22,7 @@ ul li:first-child
 	/*color: rgba(0,0,0,0.6);*/
 	background-color: rgba(0,0,0,0.05);
 	font-weight: bold;
+	border-left: none;
 }
 
 ul li
@@ -35,15 +36,6 @@ ul li .money
 	float:right;
 }
 
-.yellow{
-	background-color: #bfdd8b;
-}
-
-.blue
-{
-	background-color: #98c4ff;
-}
-
 .envelope
 {
 	border-left: 0.5em solid rgba(255,255,255,0.5);
@@ -52,4 +44,28 @@ ul li .money
 .savings
 {
 	border-left: 0.5em solid rgba(0,0,0,0.5);
+}
+
+
+/*color scheme concepts*/
+.yellow{
+	background-color: #FFFF4F;
+}
+
+.blue
+{
+	background-color: #98c4ff;
+}
+
+.red 
+{
+background-color: #ed7070;
+}
+
+.green{
+	background-color: #82DD7E;
+}
+
+.pink {
+ background-color: #F577CD;
 }
