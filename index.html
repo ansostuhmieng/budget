@@ -15,7 +15,25 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/custom.css">
+		<script src="js/vendor/jquery-1.10.2.min.js"></script>
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+		<script src="js/data.js"></script>
+		<script src="js/colors.js"></script>
+		<script src="js/lineItem.js"></script>
+		
+		<script type="text/javascript">
+			var b= null;
+			var c = null;
+			$(function() {
+				b = new budget();
+				b.load(data);
+				b.print();
+				
+				c = new colorSelect();
+				c.print();
+			});
+		</script>
+		<script src="js/form.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -23,30 +41,27 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <ul class="yellow">
-			<li>giving<span class="money">$585</span></li>
-			<li class="savings">tithes<span class="money">$485</span></li>
-			<li class="envelope">gifts<span class="money">$100</span></li>
-		<ul>
+		<div style="float:right;">
+			<div id="formAddCategory">
+				<div id="formColors"></div>
+				<input type="text" id="txtCategory" />
+				<span onclick="addCategory();">add</span>
+				
+			</div>
+			
+			<div id="formAddLineItem">
+				<input type="text" id="txtTitle" />
+				<input type="text" id="txtAmount" />
+				<span onclick="addLineItem();">add</span>
+			</div>
+		</div>
 		
-        <ul class="blue">
-			<li>necesities<span class="money">$1660</span></li>
-			<li>food<span class="money">$485</span></li>
-			<li class="envelope">clothes<span class="money">$100</span></li>
-			<li>rent<span class="money">$995</span></li>
-			<li class="savings">electricity<span class="money">$80</span></li>
-		<ul>		
-		
-        <ul class="red">
-			<li>debt<span class="money">$265.07</span></li>
-			<li>great lakes 1<span class="money">$210.76</span></li>
-			<li class="envelope">great lakes 2<span class="money">$54.31</span></li>
-			<li class="savings">credit card<span class="money">$0</span></li>
-		<ul>				
-
+		<div id="budget" style="width:20em;">
+		</div>
+<!--
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/main.js"></script>-->
     </body>
 </html>
