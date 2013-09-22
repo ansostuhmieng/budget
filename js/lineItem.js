@@ -129,6 +129,8 @@ function budget()
 {
 	this.activeCategories = 0;
 	this.categories = new Array();
+	this.income = new Array();
+	this.debt = new Array();
 }
 
 budget.prototype.addCat = function(cat)
@@ -162,11 +164,24 @@ budget.prototype.load = function(json)
 		
 		this.addCat(cat);
 	}
+	
+	//loop through income
+	for(var i=0; i<json.income.length; i++)
+	{
+		this.income.push(json.income[i]);
+	}
+	
+	//loop through debt
+	for(var i=0; i<json.debt.length; i++)
+	{
+		this.debt.push(json.debt[i]);
+	}
 }
 
 budget.prototype.print = function()
 {
 	document.getElementById('budget').innerHTML = '';
+	document.getElementById('overview').innerHTML = '';
 
 	//loop through categories
 	for(var i=0; i<this.categories.length; i++)
@@ -202,6 +217,17 @@ budget.prototype.print = function()
 		
 		document.getElementById('budget').appendChild(catUl);
 	}
+	
+	//generate the overview
+	var overviewUl = document.createElement('ul');
+	this.printIncome(overviewUl);
+	for(var i=0; i<this.categories.length; i++)
+	{
+		var title = this.categories[i].printTitle();
+		title.style.backgroundColor = this.categories[i].color;
+		overviewUl.appendChild(title);
+	}
+	document.getElementById('overview').appendChild(overviewUl);
 }
 
 budget.prototype.toJSON = function()
@@ -222,13 +248,40 @@ budget.prototype.update= function(cat, line, amount)
 	this.print();
 }
 
+budget.prototype.incomeTotal = function()
+{
+	var total = 0;
+	for(var i=0; i< this.income.length; i++)
+	{
+		total += income[i].amount;
+	}
+}
 
+budget.prototype.printIncome = function(ul)
+{
+	for(var i =0; i<this.income.length; i++)
+	{
+		var li = document.createElement('li');
+		var moneySpan = document.createElement('span');
+		moneySpan.type= 'text';
+		
+		var titleText = document.createTextNode(this.income[i].title);
+		li.appendChild(titleText);
 
+		var moneyText = document.createTextNode(this.income[i].amount);
+		
+		moneySpan.appendChild(moneyText);
+		moneySpan.className = 'money';
+				
+		li.appendChild(moneySpan);
+		li.style.backgroundColor = '#DDD';
+		
+		ul.appendChild(li);
+	}
+}
 
-
-
-
-
-
-
+budget.prototype.printLeftovers = function(ul)
+{
+	
+}
 
