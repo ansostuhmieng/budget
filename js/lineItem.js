@@ -282,6 +282,8 @@ budget.prototype.printIncome = function(ul)
 	}
 }
 
+
+
 budget.prototype.categoryTotal = function()
 {
 	var total = 0;
@@ -296,6 +298,29 @@ budget.prototype.remainder = function()
 {
 	return this.incomeTotal()-this.categoryTotal();
 }
+
+budget.prototype.envelope = function()
+{
+	total = 0;
+	for(var i=0; i<categories.length; i++)
+	{
+		total += categories[i].envelopeTotal();
+	}
+	
+	return total;
+}
+
+budget.prototype.savings = function()
+{
+	total = 0;
+	for(var i=0; i<categories.length; i++)
+	{
+		total += categories[i].savingsTotal();
+	}
+	
+	return total;
+}
+
 
 budget.prototype.printLeftovers = function(ul)
 {
