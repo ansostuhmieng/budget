@@ -253,8 +253,10 @@ budget.prototype.incomeTotal = function()
 	var total = 0;
 	for(var i=0; i< this.income.length; i++)
 	{
-		total += income[i].amount;
+		total += this.income[i].amount;
 	}
+	
+	return total;
 }
 
 budget.prototype.printIncome = function(ul)
@@ -268,7 +270,7 @@ budget.prototype.printIncome = function(ul)
 		var titleText = document.createTextNode(this.income[i].title);
 		li.appendChild(titleText);
 
-		var moneyText = document.createTextNode(this.income[i].amount);
+		var moneyText = document.createTextNode('$' + this.income[i].amount);
 		
 		moneySpan.appendChild(moneyText);
 		moneySpan.className = 'money';
@@ -278,6 +280,21 @@ budget.prototype.printIncome = function(ul)
 		
 		ul.appendChild(li);
 	}
+}
+
+budget.prototype.categoryTotal = function()
+{
+	var total = 0;
+	for(var i=0; i< this.categories.length; i++)
+	{
+		total += this.categories[i].total();
+	}
+	return total;
+}
+
+budget.prototype.remainder = function()
+{
+	return this.incomeTotal()-this.categoryTotal();
 }
 
 budget.prototype.printLeftovers = function(ul)

@@ -1,6 +1,7 @@
 var data = {
 	income:[{title: 'vendnovation',amount: 4491.86}],
-	debt:[{title: 'Great Lakes 1', amount: 1000}],
+	debt:[{title: 'Great Lakes 1', amount: 1000},
+		{title: 'Great Lakes 2', amount: 1000}],
 	category:
 	[{	
 		title: 'giving',
